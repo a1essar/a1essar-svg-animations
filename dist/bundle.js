@@ -74,7 +74,7 @@
 	var SvgAnimations = function SvgAnimations() {
 	    _classCallCheck(this, SvgAnimations);
 
-	    _snapSvgMin2.default.load('/assets/sprite.svg', function (svg) {
+	    _snapSvgMin2.default.load('./assets/sprite.svg', function (svg) {
 	        (0, _snapSvgMin2.default)('body').append(svg);
 
 	        var canvas = (0, _snapSvgMin2.default)(140, 140);

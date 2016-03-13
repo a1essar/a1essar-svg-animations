@@ -11,7 +11,7 @@ mina.acceleration = function (n) {
 
 class SvgAnimations {
     constructor() {
-        Snap.load('/assets/sprite.svg', (svg) => {
+        Snap.load('./assets/sprite.svg', (svg) => {
             Snap('body').append(svg);
 
             let canvas = Snap(140, 140);

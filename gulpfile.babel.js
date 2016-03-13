@@ -4,6 +4,7 @@ import gutil from 'gulp-util';
 import less from 'gulp-less';
 import autoprefixer from 'gulp-autoprefixer';
 import webpack from 'webpack';
+import ghPages from 'gh-pages';
 import browserSync from 'browser-sync';
 let bs = browserSync.create();
 
@@ -89,4 +90,9 @@ gulp.task('watch', ['build'], () => {
     gulp.watch('./dist/assets/**').on('change', bs.reload);
     gulp.watch('./dist/**/*.css').on('change', bs.reload);
     gulp.watch('./dist/**/*.js').on('change', bs.reload);
+});
+
+gulp.task('gh-pages', function() {
+    return gulp.src('./dist/**/*')
+        .pipe(ghPages());
 });
