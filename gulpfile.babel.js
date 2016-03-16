@@ -4,6 +4,7 @@ import gutil from 'gulp-util';
 import less from 'gulp-less';
 import autoprefixer from 'gulp-autoprefixer';
 import webpack from 'webpack';
+import BowerWebpackPlugin from 'bower-webpack-plugin';
 import ghPages from 'gulp-gh-pages';
 import browserSync from 'browser-sync';
 let bs = browserSync.create();
@@ -32,8 +33,19 @@ gulp.task('scripts', (callback) => {
             path: __dirname + '/dist',
             filename: 'bundle.js'
         },
+        resolve: {
+            alias: {
+                'bezier-easing': '../bower_components/bezier-easing/index.js'
+            }
+        },
         plugins: [
-            new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendor.bundle.js')
+            new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendor.bundle.js'),
+            new BowerWebpackPlugin({
+                modulesDirectories: ['bower_components'],
+                manifestFiles: ['bower.json', '.bower.json'],
+                includes: /.*/,
+                excludes: []
+            })
         ],
         module: {
             loaders: [

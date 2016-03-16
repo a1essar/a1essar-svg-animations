@@ -17,6 +17,13 @@
     "devDependencies": {
         "normalize.css": "necolas/normalize.css"
     },
+    "overrides": {
+        "bezier-easing": {
+            "main": [
+                "index.js"
+            ]
+        }
+    },
     "license": "MIT",
     "ignore": [
         "**/.*",

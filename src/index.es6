@@ -1,6 +1,6 @@
-import $ from '../bower_components/jquery/dist/jquery.min.js';
-import Snap from '../bower_components/Snap.svg/dist/snap.svg-min.js';
-import BezierEasing from '../bower_components/bezier-easing/index.js';
+import $ from 'jquery';
+import Snap from 'Snap.svg';
+import BezierEasing from 'bezier-easing';
 import {Bubble} from './bubble.es6';
 import {Cog} from './cog.es6';
 
