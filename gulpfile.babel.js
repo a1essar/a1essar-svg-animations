@@ -20,11 +20,21 @@ gulp.task('styles', () => {
 gulp.task('scripts', (callback) => {
     webpack({
         context: __dirname,
-        entry: './src/index.es6',
+        entry: {
+            app: './src/index.es6',
+            vendor: [
+                './bower_components/jquery/dist/jquery.min',
+                './bower_components/Snap.svg/dist/snap.svg-min',
+                './bower_components/bezier-easing/index'
+            ]
+        },
         output: {
             path: __dirname + '/dist',
             filename: 'bundle.js'
         },
+        plugins: [
+            new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendor.bundle.js')
+        ],
         module: {
             loaders: [
                 {

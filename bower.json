@@ -10,6 +10,7 @@
         "dist/assets/sprite.svg"
     ],
     "dependencies": {
+        "jquery": "~2.2.1",
         "Snap.svg": "~0.4.1",
         "bezier-easing": "gre/bezier-easing#~2.0.1"
     },
