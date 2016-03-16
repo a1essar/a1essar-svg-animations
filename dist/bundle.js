@@ -46,6 +46,13 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.SvgAnimations = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _jqueryMin = __webpack_require__(1);
 
 	var _jqueryMin2 = _interopRequireDefault(_jqueryMin);
@@ -71,61 +78,83 @@
 	    return acceleration(n);
 	};
 
-	var SvgAnimations = function SvgAnimations() {
-	    _classCallCheck(this, SvgAnimations);
+	var SvgAnimations = exports.SvgAnimations = function () {
+	    function SvgAnimations() {
+	        _classCallCheck(this, SvgAnimations);
+	    }
 
-	    _snapSvgMin2.default.load('./assets/sprite.svg', function (svg) {
-	        (0, _snapSvgMin2.default)('body').append(svg);
+	    _createClass(SvgAnimations, [{
+	        key: 'loadSprite',
+	        value: function loadSprite() {
+	            var _this = this;
 
-	        var canvas = (0, _snapSvgMin2.default)(140, 140);
+	            return new Promise(function (resolve, reject) {
+	                _snapSvgMin2.default.load('./assets/sprite.svg', function (svg) {
+	                    _this.svg = svg;
 
-	        new _cog.Cog(canvas, svg, {
-	            x: 0,
-	            y: 65,
-	            width: 75,
-	            height: 75,
-	            startAngle: 0,
-	            endAngle: 360
-	        }).animate();
+	                    (0, _snapSvgMin2.default)('body').append(svg);
 
-	        new _cog.Cog(canvas, svg, {
-	            x: 65,
-	            y: 40,
-	            width: 75,
-	            height: 75,
-	            startAngle: 10,
-	            endAngle: -350
-	        }).animate();
+	                    resolve();
+	                });
+	            });
+	        }
+	    }, {
+	        key: 'createCogAnimation',
+	        value: function createCogAnimation() {
+	            var canvas = (0, _snapSvgMin2.default)(140, 140);
 
-	        new _bubble.Bubble(canvas, svg, {
-	            x: 50,
-	            y: 50,
-	            width: 15,
-	            height: 15,
-	            delay: 3000
-	        }).animate();
+	            new _cog.Cog(canvas, this.svg, {
+	                x: 0,
+	                y: 65,
+	                width: 75,
+	                height: 75,
+	                startAngle: 0,
+	                endAngle: 360
+	            }).animate();
 
-	        new _bubble.Bubble(canvas, svg, {
-	            x: 35,
-	            y: 45,
-	            width: 18,
-	            height: 18,
-	            delay: 3500
-	        }).animate();
+	            new _cog.Cog(canvas, this.svg, {
+	                x: 65,
+	                y: 40,
+	                width: 75,
+	                height: 75,
+	                startAngle: 10,
+	                endAngle: -350
+	            }).animate();
 
-	        new _bubble.Bubble(canvas, svg, {
-	            x: 50,
-	            y: 50,
-	            width: 12,
-	            height: 12,
-	            delay: 4000
-	        }).animate();
+	            new _bubble.Bubble(canvas, this.svg, {
+	                x: 50,
+	                y: 50,
+	                width: 15,
+	                height: 15,
+	                delay: 3000
+	            }).animate();
 
-	        (0, _snapSvgMin2.default)('.js-cog-svg-icon').append(canvas);
-	    });
-	};
+	            new _bubble.Bubble(canvas, this.svg, {
+	                x: 35,
+	                y: 45,
+	                width: 18,
+	                height: 18,
+	                delay: 3500
+	            }).animate();
 
-	new SvgAnimations();
+	            new _bubble.Bubble(canvas, this.svg, {
+	                x: 50,
+	                y: 50,
+	                width: 12,
+	                height: 12,
+	                delay: 4000
+	            }).animate();
+
+	            (0, _snapSvgMin2.default)('.js-cog-svg-icon').append(canvas);
+	        }
+	    }]);
+
+	    return SvgAnimations;
+	}();
+
+	if (window) {
+	    window.SvgAnimations = SvgAnimations;
+	}
 
 /***/ },
 /* 1 */

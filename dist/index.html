@@ -5,6 +5,13 @@
     <title>SVG animations</title>
     <link rel="stylesheet" href="./index.css"/>
     <script src="./bundle.js"></script>
+
+    <script >
+        var svgAnimation = new SvgAnimations();
+        svgAnimation.loadSprite().then(function() {
+            svgAnimation.createCogAnimation();
+        });
+    </script>
 </head>
 <body>
 
